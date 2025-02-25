@@ -1,0 +1,174 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4 shadow-lg" style="width: 70vw">
+    <div class="card-body">
+      <h4 class="card-title text-center mb-4">Ajouter un Apartment</h4>
+      <form [formGroup]="apartForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <label for="apart_Number" class="col-sm-2 col-form-label"
+            >Apartment Number:</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="apart_Number"
+              formControlName="apart_Number"
+              placeholder=""
+            />
+            <div *ngIf="apartForm.get('apart_Number')?.invalid && apartForm.get('apart_Number')?.touched" class="text-danger">
+          <small *ngIf="apartForm.get('apart_Number')?.errors?.['required']">Apartment Number is required.</small>
+          <small *ngIf="apartForm.get('apart_Number')?.errors?.['pattern']">Apartment Number must be a number.</small>
+       
+        </div> 
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="floorNum" class="col-sm-2 col-form-label"
+            >Floor Number:</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              formControlName="floorNum"
+              class="form-control"
+              id="floorNum"
+            />
+           <div *ngIf="apartForm.get('floorNum')?.invalid && apartForm.get('floorNum')?.touched" class="text-danger">
+          <small *ngIf="apartForm.get('floorNum')?.errors?.['required']">Floor Number is required.</small>
+          <small *ngIf="apartForm.get('floorNum')?.errors?.['pattern']">Floor Number must be a number.</small>
+        </div> 
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="surface" class="col-sm-2 col-form-label">Surface</label>
+          <div class="col-sm-10">
+            <input
+              formControlName="surface"
+              type="text"
+              class="form-control"
+              id="surface"
+              placeholder=""
+            />
+             <div *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched" class="text-danger">
+          <small *ngIf="apartForm.get('surface')?.errors?.['required']">Surface is required.</small>
+        </div> 
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <fieldset class="row mb-3">
+            <legend class="col-sm-2 col-form-label pt-0">Terrace</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="terrace"
+                  [value]="true"
+                  id="terraceYes"
+                />
+                <label class="form-check-label" for="terraceYes">Yes</label>
+              </div>
+              <div class="form-check">
+                <input
+                  formControlName="terrace"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="false"
+                  id="terraceNo"
+                />
+                <label class="form-check-label" for="terraceNo">No</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="row mb-3">
+          <label for="surfaceterrace" class="col-sm-2 col-form-label"
+            >Surface Terrace</label
+          >
+          <div class="col-sm-10">
+            <input
+              formControlName="surfaceterrace"
+              type="text"
+              class="form-control"
+              id="surfaceterrace"
+              placeholder=""
+            />
+            <!-- <div *ngIf="apartForm.get('surfaceterrace')?.invalid && apartForm.get('surfaceterrace')?.touched" class="text-danger">
+          <small *ngIf="apartForm.get('surfaceterrace')?.errors?.['required']">Surface Terrace is required.</small>
+          <small *ngIf="apartForm.get('surfaceterrace')?.errors?.['pattern']">Surface Terrace must be a valid number.</small>
+        </div> -->
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <fieldset class="row mb-3">
+            <legend class="col-sm-2 col-form-label pt-0">Category</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input
+                  formControlName="category"
+                  class="form-check-input"
+                  type="radio"
+                  value="S+1"
+                  id="categoryS1"
+                />
+                <label class="form-check-label" for="categoryS1">S+1</label>
+              </div>
+              <div class="form-check">
+                <input
+                  formControlName="category"
+                  class="form-check-input"
+                  type="radio"
+                  value="S+2"
+                  id="categoryS2"
+                />
+                <label class="form-check-label" for="categoryS2">S+2</label>
+              </div>
+              <div class="form-check">
+                <input
+                  formControlName="category"
+                  class="form-check-input"
+                  type="radio"
+                  value="S+3"
+                  id="categoryS3"
+                />
+                <label class="form-check-label" for="categoryS3">S+3</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="row mb-3">
+          <label for="res" class="col-sm-2 col-form-label">Residence</label>
+          <div class="col-sm-10">
+            <input
+              formControlName="ResidenceId"
+              type="text"
+              class="form-control"
+              id="res"
+              placeholder="0"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <button
+              type="button"
+              class="btn btn-danger w-100"
+              (click)="apartForm.reset()"
+            >
+              Reset
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="submit" [disabled]="apartForm.invalid" class="btn btn-primary w-100">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

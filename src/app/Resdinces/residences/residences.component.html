@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="row">
+    <input
+      type="text"
+      [(ngModel)]="searchInput"
+      class="form-control"
+      placeholder="Search"
+    />
+    <button (click)="filterResidence()">search</button>
+    <div
+      *ngFor="let item of listResidences"
+      class="col-md-4"
+      style="margin-bottom: 20px"
+    >
+      <img [src]="item.image" class="img-fluid h-50 w-75" />
+      <h3>{{ item.name }}</h3>
+      <h3>{{ item.status }}</h3>
+
+      <h3 [ngSwitch]="item.status">
+        <svg
+          *ngSwitchCase="'Vendu'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-x"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+        <svg
+          *ngSwitchCase="'Disponible'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-info"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
+          />
+        </svg>
+        <svg
+          *ngSwitchCase="'En Construction'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-cone"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M7.03 1.88c.252-1.01 1.688-1.01 1.94 0l2.905 11.62H14a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1h2.125z"
+          />
+        </svg>
+      </h3>
+      <button (click)="showLocation(item)" class="btn btn-primary">
+        Show Location
+      </button>
+      <button (click)="addFavList(item)" class="btn btn-primary">Like</button>
+      <button (click)="showDetails(item)" class="btn btn-primary">
+        Show Details
+      </button>
+      <a
+        class="nav-link"
+        [routerLink]="'apartments/' + item.id"
+        routerLinkActive="active"
+        >appartements list</a
+      >
+    </div>
+  </div>
+  list fav
+  <div class="row">
+    <div
+      *ngFor="let item of listResidencesFavs"
+      class="col-md-4"
+      style="margin-bottom: 20px"
+    >
+      <img [src]="item.image" class="img-fluid h-50 w-75" />
+      <h3>{{ item.name }}</h3>
+      <h3>{{ item.status }}</h3>
+
+      <h3 [ngSwitch]="item.status">
+        <svg
+          *ngSwitchCase="'Vendu'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-x"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+        <svg
+          *ngSwitchCase="'Disponible'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-info"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
+          />
+        </svg>
+        <svg
+          *ngSwitchCase="'En Construction'"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-cone"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M7.03 1.88c.252-1.01 1.688-1.01 1.94 0l2.905 11.62H14a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1h2.125z"
+          />
+        </svg>
+      </h3>
+      <button (click)="showLocation(item)" class="btn btn-primary">
+        Show Location
+      </button>
+    </div>
+  </div>
+</div>
